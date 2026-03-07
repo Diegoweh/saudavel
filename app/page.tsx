@@ -340,7 +340,7 @@ export default function Home() {
               <div className="text-center mb-6">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Plan Comida</h3>
                 <p className="text-gray-600 mb-2">Tu almuerzo del día cubierto</p>
-                <p className="text-3xl font-bold text-green-600">$670.00<span className="text-base font-normal text-gray-500">/mes</span></p>
+                <p className="text-3xl font-bold text-green-600">$670.00<span className="text-base font-normal text-gray-500">/semanal</span></p>
               </div>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start">
@@ -393,7 +393,7 @@ export default function Home() {
               <div className="text-center mb-6">
                 <h3 className="text-2xl font-bold text-white mb-2">Plan Desayuno + Comida</h3>
                 <p className="text-green-100 mb-2">Dos momentos del día cubiertos</p>
-                <p className="text-3xl font-bold text-white">$985.00<span className="text-base font-normal text-green-200">/mes</span></p>
+                <p className="text-3xl font-bold text-white">$985.00<span className="text-base font-normal text-green-200">/semanal</span></p>
               </div>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start">
@@ -449,7 +449,7 @@ export default function Home() {
               <div className="text-center mb-6">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Plan Completo</h3>
                 <p className="text-gray-600 mb-2">Desayuno + Comida + Cena</p>
-                <p className="text-3xl font-bold text-green-600">$1,385.00<span className="text-base font-normal text-gray-500">/mes</span></p>
+                <p className="text-3xl font-bold text-green-600">$1,385.00<span className="text-base font-normal text-gray-500">/semanal</span></p>
               </div>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start">
