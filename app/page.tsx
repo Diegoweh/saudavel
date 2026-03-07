@@ -4,13 +4,21 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 
+import { GiCash } from "react-icons/gi";
+import { FaCalendarCheck } from "react-icons/fa";
+import { FaPeopleGroup } from "react-icons/fa6";
+import { MdOutlineWorkspacePremium } from "react-icons/md";
+import { FaClipboardCheck } from "react-icons/fa6";
+
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const beneficiosRef = useRef(null);
   const planesRef = useRef(null);
   const galeriaRef = useRef(null);
   const testimonialesRef = useRef(null);
-  const comoFuncionaRef = useRef(null);
+  const comoFuncionaRef = useRef(null);  
+  const promocionesRef = useRef(null);
+  const promocionesInView = useInView(promocionesRef, { once: true, amount: 0.2 });
 
   const beneficiosInView = useInView(beneficiosRef, { once: true, amount: 0.2 });
   const planesInView = useInView(planesRef, { once: true, amount: 0.1 });
@@ -223,7 +231,7 @@ export default function Home() {
           >
             ¿Por Qué Elegir Saudavel?
           </motion.h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             <motion.div
               className="text-center p-6"
               initial={{ y: 50, opacity: 0 }}
@@ -242,6 +250,7 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-2 text-gray-900">Nutrición Balanceada</h3>
               <p className="text-gray-600">Cada comida está diseñada por nutricionistas profesionales para garantizar el balance perfecto de macronutrientes.</p>
             </motion.div>
+
             <motion.div
               className="text-center p-6"
               initial={{ y: 50, opacity: 0 }}
@@ -260,6 +269,7 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-2 text-gray-900">Ahorra Tiempo</h3>
               <p className="text-gray-600">Olvídate de cocinar y planificar menús. Nosotros nos encargamos de todo para que disfrutes más tiempo libre.</p>
             </motion.div>
+
             <motion.div
               className="text-center p-6"
               initial={{ y: 50, opacity: 0 }}
@@ -276,7 +286,24 @@ export default function Home() {
                 </svg>
               </motion.div>
               <h3 className="text-xl font-semibold mb-2 text-gray-900">Entrega a Domicilio</h3>
-              <p className="text-gray-600">Recibe tus comidas frescas directamente en tu puerta, en el horario que mejor te convenga.</p>
+              <p className="text-gray-600">Recibe tus comidas al momento directamente en tu puerta de la casa y oficina.</p>
+            </motion.div>
+
+            <motion.div
+              className="text-center p-6"
+              initial={{ y: 50, opacity: 0 }}
+              animate={beneficiosInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              whileHover={{ y: -10, transition: { duration: 0.3 } }}
+            >
+              <motion.div
+                className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+              >
+                <FaClipboardCheck className='text-orange-600 h-6 w-6' />
+              </motion.div>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900">Consulta nutricional Gratis</h3>
+              <p className="text-gray-600">Cumple tu objetivo con un monitoreo constante y personaliza tus alimentos según lo que estés buscando.</p>
             </motion.div>
           </div>
         </div>
@@ -302,7 +329,7 @@ export default function Home() {
             Elige el plan que mejor se adapte a tus objetivos y estilo de vida
           </motion.p>
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Plan Básico */}
+            {/* Plan 1: Comida */}
             <motion.div
               className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition"
               initial={{ scale: 0.9, opacity: 0 }}
@@ -311,41 +338,48 @@ export default function Home() {
               whileHover={{ scale: 1.05, y: -10 }}
             >
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Plan Básico</h3>
-                <p className="text-gray-600 mb-4">Perfecto para comenzar</p>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Plan Comida</h3>
+                <p className="text-gray-600 mb-2">Tu almuerzo del día cubierto</p>
+                <p className="text-3xl font-bold text-green-600">$670.00<span className="text-base font-normal text-gray-500">/mes</span></p>
               </div>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-700">3 comidas diarias</span>
+                  <span className="text-gray-700">Comida</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-700">Menú variado semanal</span>
+                  <span className="text-gray-700">Colaciones</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-700">Entrega 5 días/semana</span>
+                  <span className="text-gray-700">Agua</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-700">Calorías balanceadas</span>
+                  <span className="text-gray-700">Servicio a domicilio</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Asesoría nutricional presencial</span>
                 </li>
               </ul>
-              <a href="#contacto" className="block w-full bg-green-600 text-white text-center px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition">
+              <a href="https://wa.me/5216692684633?text=Hola%2C%20me%20interesa%20el%20Plan%20Comida%20(%24670.00).%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%3F" target="_blank" rel="noopener noreferrer" className="block w-full bg-green-600 text-white text-center px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition">
                 Solicitar Información
               </a>
             </motion.div>
 
-            {/* Plan Premium */}
+            {/* Plan 2: Desayuno + Comida */}
             <motion.div
               className="bg-gradient-to-br from-green-600 to-green-700 rounded-2xl shadow-xl p-8 transform scale-105 relative"
               initial={{ scale: 0.9, opacity: 0 }}
@@ -357,47 +391,54 @@ export default function Home() {
                 Más Popular
               </div>
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-white mb-2">Plan Premium</h3>
-                <p className="text-green-100 mb-4">Para resultados óptimos</p>
+                <h3 className="text-2xl font-bold text-white mb-2">Plan Desayuno + Comida</h3>
+                <p className="text-green-100 mb-2">Dos momentos del día cubiertos</p>
+                <p className="text-3xl font-bold text-white">$985.00<span className="text-base font-normal text-green-200">/mes</span></p>
               </div>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-white mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-white">5 comidas diarias</span>
+                  <span className="text-white">Desayuno</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-white mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-white">Menú personalizado</span>
+                  <span className="text-white">Comida</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-white mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-white">Entrega 7 días/semana</span>
+                  <span className="text-white">Colaciones</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-white mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-white">Asesoría nutricional</span>
+                  <span className="text-white">Agua</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-white mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-white">Seguimiento personalizado</span>
+                  <span className="text-white">Servicio a domicilio</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-white mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-white">Asesoría nutricional presencial</span>
                 </li>
               </ul>
-              <a href="#contacto" className="block w-full bg-white text-green-600 text-center px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
+              <a href="https://wa.me/5216692684633?text=Hola%2C%20me%20interesa%20el%20Plan%20Desayuno%20%2B%20Comida%20(%24985.00).%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%3F" target="_blank" rel="noopener noreferrer" className="block w-full bg-white text-green-600 text-center px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
                 Solicitar Información
               </a>
             </motion.div>
 
-            {/* Plan Fitness */}
+            {/* Plan 3: Desayuno + Comida + Cena */}
             <motion.div
               className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition"
               initial={{ scale: 0.9, opacity: 0 }}
@@ -406,40 +447,150 @@ export default function Home() {
               whileHover={{ scale: 1.05, y: -10 }}
             >
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Plan Fitness</h3>
-                <p className="text-gray-600 mb-4">Para deportistas</p>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Plan Completo</h3>
+                <p className="text-gray-600 mb-2">Desayuno + Comida + Cena</p>
+                <p className="text-3xl font-bold text-green-600">$1,385.00<span className="text-base font-normal text-gray-500">/mes</span></p>
               </div>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-700">5 comidas diarias</span>
+                  <span className="text-gray-700">Desayuno</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-700">Alto contenido proteico</span>
+                  <span className="text-gray-700">Comida</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-700">Entrega 6 días/semana</span>
+                  <span className="text-gray-700">Cena</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-700">Suplementos opcionales</span>
+                  <span className="text-gray-700">Colaciones</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Agua</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Servicio a domicilio</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Asesoría nutricional presencial</span>
                 </li>
               </ul>
-              <a href="#contacto" className="block w-full bg-green-600 text-white text-center px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition">
+              <a href="https://wa.me/5216692684633?text=Hola%2C%20me%20interesa%20el%20Plan%20Completo%20-%20Desayuno%20%2B%20Comida%20%2B%20Cena%20(%241%2C385.00).%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%3F" target="_blank" rel="noopener noreferrer" className="block w-full bg-green-600 text-white text-center px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition">
                 Solicitar Información
               </a>
             </motion.div>
           </div>
+
+          <motion.p
+            className="text-center text-gray-600 mt-12 max-w-3xl mx-auto text-base italic"
+            initial={{ y: 20, opacity: 0 }}
+            animate={planesInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+          >
+            Nuestros planes están para pérdida de peso, grasa y mantener una buena salud, y si estás buscando para masa muscular se pueden adaptar. Planes de lunes a viernes, con opción a incluir sábados con costo extra.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Sección de Promociones */}
+      <section id="promociones" ref={promocionesRef} className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ y: 30, opacity: 0 }}
+            animate={promocionesInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Promociones Especiales</h2>
+            <div className="w-24 h-1 bg-orange-500 mx-auto rounded-full"></div>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                title: "Pago en Efectivo",
+                desc: "5% de descuento pagando la semana previa o lunes al recibir.",
+                icon: <GiCash className='text-amber-300' />,
+                color: "bg-green-50",
+                border: "border-green-100"
+              },
+              {
+                title: "Plan Mensual",
+                desc: "10% de descuento pagando el equivalente a 4 semanas de servicio.",
+                icon: <FaCalendarCheck className='text-green-500/60' />,
+                color: "bg-orange-50",
+                border: "border-orange-100"
+              },
+              {
+                title: "Tercia Saludable",
+                desc: "10% de descuento en grupos a partir de 3 personas.",
+                icon: <FaPeopleGroup className='text-amber-300' />,
+                color: "bg-green-50",
+                border: "border-green-100"
+              },
+              {
+                title: "Grupo Premium",
+                desc: "15% de descuento en grupos de 4 personas o más.",
+                icon: <MdOutlineWorkspacePremium className='text-green-500/60' />,
+                color: "bg-orange-50",
+                border: "border-orange-100"
+              }
+            ].map((promo, index) => (
+              <motion.div
+                key={index}
+                className={`${promo.color} ${promo.border} border rounded-2xl p-6 flex flex-col items-center text-center`}
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={promocionesInView ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
+              >
+                <span className="text-4xl mb-4">{promo.icon}</span>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{promo.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{promo.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Footer de la sección */}
+          <motion.div 
+            className="mt-12 p-6 bg-gray-50 rounded-2xl border border-dashed border-gray-300 text-center"
+            initial={{ opacity: 0 }}
+            animate={promocionesInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ delay: 0.6 }}
+          >
+            <p className="text-gray-500 text-sm mb-4">* Aplican restricciones</p>
+            <h4 className="text-lg font-semibold text-green-700 mb-4">
+              🚨 ¿Te interesa alguna? ¡No te quedes con la duda!
+            </h4>
+            <motion.a
+              href="https://wa.me/5216692684633?text=Hola%2C%20me%20interesa%20la%20promoción%20..."
+              className="inline-block bg-orange-500 text-white px-8 py-3 rounded-full font-bold hover:bg-orange-600 transition shadow-md"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Preguntar por una Promo
+            </motion.a>
+          </motion.div>
         </div>
       </section>
 
@@ -452,7 +603,7 @@ export default function Home() {
             animate={galeriaInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Nuestros Platillos
+            Algunos de nuestros platillos son los siguientes
           </motion.h2>
           <motion.p
             className="text-center text-gray-600 mb-16 max-w-2xl mx-auto"
@@ -598,8 +749,8 @@ export default function Home() {
               >
                 1
               </motion.div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">Elige tu Plan</h3>
-              <p className="text-gray-600">Selecciona el plan que mejor se adapte a tus objetivos y necesidades.</p>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900">Contactanos</h3>
+              <p className="text-gray-600">Para darte información personalizada acerca de los planes que manejamos</p>
             </motion.div>
             <motion.div
               className="text-center"
@@ -613,8 +764,8 @@ export default function Home() {
               >
                 2
               </motion.div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">Personaliza</h3>
-              <p className="text-gray-600">Cuéntanos sobre tus preferencias alimentarias y restricciones.</p>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900">Elige el plan</h3>
+              <p className="text-gray-600">El que mejor se adapte a tus necesidades</p>
             </motion.div>
             <motion.div
               className="text-center"
@@ -628,8 +779,8 @@ export default function Home() {
               >
                 3
               </motion.div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">Preparamos</h3>
-              <p className="text-gray-600">Nuestro equipo prepara tus comidas con ingredientes frescos y de calidad.</p>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900">Agenda tu cita nutricional</h3>
+              <p className="text-gray-600">Puedes iniciar sin consulta, sin embargo, nosotros te sugerimos una cita previa para mejor valoración</p>
             </motion.div>
             <motion.div
               className="text-center"
@@ -643,8 +794,8 @@ export default function Home() {
               >
                 4
               </motion.div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">Recibe y Disfruta</h3>
-              <p className="text-gray-600">Recibe tus comidas en tu puerta y disfruta de una alimentación saludable.</p>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900">Recibe tus alimentos</h3>
+              <p className="text-gray-600">Recibe tus comidas en tu puerta y disfruta de una alimentación saludable</p>
             </motion.div>
           </div>
         </div>
@@ -667,7 +818,7 @@ export default function Home() {
               </svg>
               Contáctanos en Instagram
             </a>
-            <a href="https://wa.me/1234567890" className="bg-green-800 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-green-900 transition shadow-lg inline-flex items-center justify-center gap-2">
+            <a href="https://wa.me/5216692684633?text=Hola%2C%20me%20interesa%20un%20Plan" className="bg-green-800 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-green-900 transition shadow-lg inline-flex items-center justify-center gap-2">
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
               </svg>
