@@ -28,7 +28,7 @@ export default function Home() {
   const comoFuncionaInView = useInView(comoFuncionaRef, { once: true, amount: 0.2 });
 
   const whatsappMessage = encodeURIComponent('Quiero adquirir mi 10% de descuento por el plan de dos semanas por favor');
-  const whatsappUrl = `https://wa.me/5218116346722?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/5216692684633?text=${whatsappMessage}`;
 
   return (
     <div className="min-h-screen bg-white">
