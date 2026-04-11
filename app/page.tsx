@@ -928,8 +928,8 @@ export default function Home() {
               >
                 4
               </motion.div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-900">Recibe tus alimentos</h3>
-              <p className="text-gray-600">En tu puerta, lista para consumir</p>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900">Recibe tus platillos</h3>
+              <p className="text-gray-600">En tu puerta, listos para consumir</p>
             </motion.div>
           </div>
         </div>
