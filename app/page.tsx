@@ -90,7 +90,7 @@ export default function Home() {
                 alt="Saudavel Logo"
                 width={50}
                 height={50}
-                className="w-30 h-20 object-contain"
+                className="w-20 h-15 object-contain"
                 priority
               />
               {/* <span className="text-2xl font-bold text-green-600">Saudavel</span> */}
@@ -260,8 +260,10 @@ export default function Home() {
       </section>
 
       {/* Beneficios */}
-      <section id="beneficios" ref={beneficiosRef} className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
+      <section id="beneficios" ref={beneficiosRef} className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <Image src="/bg-image.webp" alt="" fill className="object-cover object-center" />
+        <div className="absolute inset-0 bg-white/85" />
+        <div className="relative max-w-7xl mx-auto">
           <motion.h2
             className="text-4xl font-bold text-center mb-16 text-gray-900"
             initial={{ y: 30, opacity: 0 }}
@@ -552,8 +554,10 @@ export default function Home() {
       </section>
 
       {/* Sección de Promociones */}
-      <section id="promociones" ref={promocionesRef} className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
+      <section id="promociones" ref={promocionesRef} className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <Image src="/bg-image.webp" alt="" fill className="object-cover object-center" />
+        <div className="absolute inset-0 bg-white/85" />
+        <div className="relative max-w-7xl mx-auto">
           <motion.div
             className="text-center mb-16"
             initial={{ y: 30, opacity: 0 }}
@@ -765,8 +769,10 @@ export default function Home() {
       </section>
 
       {/* Cómo Funciona */}
-      <section id="como-funciona" ref={comoFuncionaRef} className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
+      <section id="como-funciona" ref={comoFuncionaRef} className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <Image src="/bg-image.webp" alt="" fill className="object-cover object-center" />
+        <div className="absolute inset-0 bg-white/85" />
+        <div className="relative max-w-7xl mx-auto">
           <motion.h2
             className="text-4xl font-bold text-center mb-16 text-gray-900"
             initial={{ y: 30, opacity: 0 }}
