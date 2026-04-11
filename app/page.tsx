@@ -5,10 +5,95 @@ import { useRef, useState } from 'react';
 import Image from 'next/image';
 
 import { GiCash } from "react-icons/gi";
-import { FaCalendarCheck } from "react-icons/fa";
+import { FaCalendarCheck, FaFacebook } from "react-icons/fa";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { MdOutlineWorkspacePremium } from "react-icons/md";
 import { FaClipboardCheck } from "react-icons/fa6";
+
+function FormularioPedido({ whatsappNumber }: { whatsappNumber: string }) {
+  const [form, setForm] = useState({
+    nombre: '',
+    direccion: '',
+    plan: '',
+    objetivo: '',
+    prohibidos: '',
+    comentarios: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const msg = [
+      `*Solicitud de Plan Saudavel*`,
+      ``,
+      `*Nombre:* ${form.nombre}`,
+      `*Dirección:* ${form.direccion}`,
+      `*Tipo de plan:* ${form.plan}`,
+      `*Objetivo:* ${form.objetivo}`,
+      `*Alimentos prohibidos o no deseados:* ${form.prohibidos || 'Ninguno'}`,
+      `*Comentarios:* ${form.comentarios || 'Ninguno'}`,
+    ].join('\n');
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+  };
+
+  const inputClass = "w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-green-400 bg-gray-50 transition";
+  const labelClass = "block text-sm font-semibold text-gray-700 mb-1";
+
+  return (
+    <motion.form
+      onSubmit={handleSubmit}
+      className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 space-y-5"
+      initial={{ y: 30, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+    >
+      <div>
+        <label className={labelClass}>Nombre</label>
+        <input name="nombre" value={form.nombre} onChange={handleChange} required placeholder="Tu nombre completo" className={inputClass} />
+      </div>
+      <div>
+        <label className={labelClass}>Dirección</label>
+        <input name="direccion" value={form.direccion} onChange={handleChange} required placeholder="Calle, colonia, ciudad..." className={inputClass} />
+      </div>
+      <div>
+        <label className={labelClass}>Tipo de plan</label>
+        <select name="plan" value={form.plan} onChange={handleChange} required className={inputClass}>
+          <option value="">Selecciona un plan</option>
+          <option value="Plan Comida">Plan Comida</option>
+          <option value="Plan Desayuno + Comida">Plan Desayuno + Comida</option>
+          <option value="Plan Desayuno + Comida + Cena">Plan Desayuno + Comida + Cena</option>
+        </select>
+      </div>
+      <div>
+        <label className={labelClass}>Objetivo</label>
+        <input name="objetivo" value={form.objetivo} onChange={handleChange} required placeholder="Ej. Bajar de peso, mantenerme, ganar músculo..." className={inputClass} />
+      </div>
+      <div>
+        <label className={labelClass}>Alimentos prohibidos o que no sean de tu agrado</label>
+        <textarea name="prohibidos" value={form.prohibidos} onChange={handleChange} rows={2} placeholder="Ej. Mariscos, cilantro, picante..." className={inputClass} />
+      </div>
+      <div>
+        <label className={labelClass}>Comentarios</label>
+        <textarea name="comentarios" value={form.comentarios} onChange={handleChange} rows={3} placeholder="Cualquier información adicional..." className={inputClass} />
+      </div>
+      <motion.button
+        type="submit"
+        className="w-full bg-green-600 text-white font-bold py-4 rounded-full hover:bg-green-700 transition shadow-md flex items-center justify-center gap-2 text-lg"
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.97 }}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-5 h-5 fill-white">
+          <path d="M16 0C7.164 0 0 7.163 0 16c0 2.822.736 5.476 2.027 7.785L0 32l8.425-2.007A15.938 15.938 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.787-1.858l-.486-.29-5.002 1.192 1.216-4.876-.317-.5A13.267 13.267 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.878c-.398-.199-2.354-1.162-2.719-1.294-.365-.133-.63-.199-.896.199-.265.398-1.028 1.294-1.26 1.56-.232.265-.465.298-.863.099-.398-.199-1.682-.62-3.204-1.977-1.184-1.057-1.983-2.362-2.215-2.76-.232-.398-.025-.613.175-.811.18-.18.398-.465.597-.698.199-.232.265-.398.398-.663.133-.265.067-.498-.033-.697-.1-.199-.896-2.162-1.228-2.96-.323-.776-.651-.671-.896-.683l-.763-.013c-.265 0-.697.1-.1063.498-.365.398-1.395 1.362-1.395 3.323 0 1.96 1.428 3.854 1.628 4.119.199.265 2.81 4.29 6.81 6.016.951.41 1.693.655 2.272.839.954.304 1.823.261 2.51.158.766-.114 2.354-.963 2.687-1.892.332-.93.332-1.727.232-1.892-.099-.166-.365-.265-.763-.465z"/>
+        </svg>
+        Enviar por WhatsApp
+      </motion.button>
+    </motion.form>
+  );
+}
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -105,6 +190,7 @@ export default function Home() {
             >
               <a href="#planes" className="text-gray-700 hover:text-green-600 transition">Planes</a>
               <a href="#beneficios" className="text-gray-700 hover:text-green-600 transition">Beneficios</a>
+              <a href="#promociones" className="text-gray-700 hover:text-green-600 transition">Promociones</a>
               <a href="#galeria" className="text-gray-700 hover:text-green-600 transition">Galería</a>
               <a href="#testimoniales" className="text-gray-700 hover:text-green-600 transition">Testimoniales</a>
               <a href="#como-funciona" className="text-gray-700 hover:text-green-600 transition">Cómo Funciona</a>
@@ -175,6 +261,7 @@ export default function Home() {
             {[
               { name: 'Planes', href: '#planes' },
               { name: 'Beneficios', href: '#beneficios' },
+              { name: 'Promociones', href: '#promociones' },
               { name: 'Galería', href: '#galeria' },
               { name: 'Testimoniales', href: '#testimoniales' },
               { name: 'Cómo Funciona', href: '#como-funciona' },
@@ -612,6 +699,9 @@ export default function Home() {
                 <p className="text-gray-600 text-sm leading-relaxed">{promo.desc}</p>
               </motion.div>
             ))}
+            <div className="md:col-span-2 lg:col-span-4 text-center ">
+                <p className="text-gray-500/40 text-xs mb-4">* Aplican restricciones</p>
+            </div>
           </div>
 
           {/* Footer de la sección */}
@@ -620,8 +710,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={promocionesInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ delay: 0.6 }}
-          >
-            <p className="text-gray-500 text-sm mb-4">* Aplican restricciones</p>
+          >            
             <h4 className="text-lg font-semibold text-green-700 mb-4">
               🚨 ¿Te interesa alguna? ¡No te quedes con la duda!
             </h4>
@@ -658,12 +747,12 @@ export default function Home() {
           </motion.p>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { name: 'Ensalada Fresca', description: 'Rica en proteínas y fibra', image: '/platillos/ensalada.webp' },
-              { name: 'Marlín a la Parrilla', description: 'Alto en Omega-3 y proteínas', image: '/platillos/marlin.webp' },
-              { name: 'Pollo Saludable', description: 'Bajo en grasa, alto en sabor', image: '/platillos/pollo.webp' },
-              { name: 'Carne Asada Premium', description: 'Proteína de alta calidad', image: '/platillos/carne-asada.webp' },
-              { name: 'Carne con Verduras', description: 'Balance perfecto de nutrientes', image: '/platillos/carne-verduras.webp' },
-              { name: 'Pescado Fresco', description: 'Omega-3 y sabor excepcional', image: '/platillos/pescado.webp' },
+              { name: 'Ensalada Mediterránea', description: 'Con queso de cabra, pollo y crotones', image: '/platillos/ensalada.webp' },
+              { name: 'Ensalada Tropical', description: 'Con carne', image: '/platillos/ensalada-tropical-carne.webp' },
+              { name: 'Pescado en crema de eneldo', description: 'Con elote y verduras al vapor', image: '/platillos/pollo.webp' },
+              { name: 'Ensalada Especial', description: 'Con pasta y pollo', image: '/platillos/ensalada-pasta-pollo.webp' },
+              { name: 'Wok de res', description: 'Con ensalada y arroz', image: '/platillos/carne-verduras.webp' },
+              { name: 'Pescado adobado', description: 'Con arroz y vegetales salteados', image: '/platillos/pescado.webp' },
             ].map((platillo, index) => (
               <motion.div
                 key={platillo.name}
@@ -714,18 +803,18 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                name: 'María González',
-                text: 'Saudavel cambió completamente mi rutina. Ahora como saludable sin tener que cocinar. ¡He perdido 10kg en 3 meses!',
+                name: 'Adriana Elizabeth Arias Valle',
+                text: 'Mi opción saludable favorita 😋',
                 rating: 5,
               },
               {
-                name: 'Carlos Ramírez',
-                text: 'Como deportista, necesitaba una alimentación balanceada. El plan fitness es perfecto para mis entrenamientos.',
+                name: 'Armida Toledo Ayala',
+                text: 'El mejor lugar de comida saludable!!!!',
                 rating: 5,
               },
               {
-                name: 'Ana Martínez',
-                text: 'La comida es deliciosa y llega siempre fresca. El servicio al cliente es excelente. Totalmente recomendado.',
+                name: 'Saints Acosta',
+                text: 'Muy buenos planes nutricionales.',
                 rating: 5,
               },
             ].map((testimonio, index) => (
@@ -770,7 +859,7 @@ export default function Home() {
 
       {/* Cómo Funciona */}
       <section id="como-funciona" ref={comoFuncionaRef} className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <Image src="/bg-image.webp" alt="" fill className="object-cover object-center" />
+        <Image src="/bg-image.webp" alt="" fill className="object-cover object-center"/>
         <div className="absolute inset-0 bg-white/85" />
         <div className="relative max-w-7xl mx-auto">
           <motion.h2
@@ -840,9 +929,30 @@ export default function Home() {
                 4
               </motion.div>
               <h3 className="text-xl font-semibold mb-2 text-gray-900">Recibe tus alimentos</h3>
-              <p className="text-gray-600">Recibe tus comidas en tu puerta y disfruta de una alimentación saludable</p>
+              <p className="text-gray-600">En tu puerta, lista para consumir</p>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Formulario de Pedido */}
+      <section id="formulario" className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <Image src="/bg-image.webp" alt="" fill className="object-cover object-center" />
+        <div className="absolute inset-0 bg-white/85" />
+        <div className="relative max-w-2xl mx-auto">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ y: 30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Solicita tu Plan</h2>
+            <div className="w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
+            <p className="text-gray-500 mt-4">Llena el formulario y te contactamos por WhatsApp para confirmar tu pedido.</p>
+          </motion.div>
+
+          <FormularioPedido whatsappNumber="5216692684633" />
         </div>
       </section>
 
@@ -900,6 +1010,9 @@ export default function Home() {
             <div>
               <h4 className="text-lg font-semibold mb-4">Síguenos</h4>
               <div className="flex gap-4">
+                <a href="https://www.facebook.com/Saudavel.Estilodevida?locale=es_LA" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-500 transition">
+                  <FaFacebook className="w-6 h-6 text-2xl" />
+                </a>
                 <a href="https://www.instagram.com/saudavel.estilodevida/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-500 transition">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/>
