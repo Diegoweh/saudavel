@@ -119,7 +119,7 @@ export default function Home() {
     <div className="min-h-screen bg-white">
 
       {/* March Promo Popup */}
-      {promoOpen && (
+      {/* {promoOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
           <div className="relative bg-white rounded-2xl shadow-2xl max-w-sm w-full overflow-hidden">
             <button
@@ -151,7 +151,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      )}
+      )} */}
       {/* Header/Navbar */}
       <motion.header
         className="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50"
