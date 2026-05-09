@@ -100,6 +100,7 @@ export default function Home() {
   const [promoOpen, setPromoOpen] = useState(true);
   const beneficiosRef = useRef(null);
   const planesRef = useRef(null);
+  const planesMasaRef = useRef(null);
   const galeriaRef = useRef(null);
   const testimonialesRef = useRef(null);
   const comoFuncionaRef = useRef(null);  
@@ -108,6 +109,7 @@ export default function Home() {
 
   const beneficiosInView = useInView(beneficiosRef, { once: true, amount: 0.2 });
   const planesInView = useInView(planesRef, { once: true, amount: 0.1 });
+  const planesMasaInView = useInView(planesMasaRef, { once: true, amount: 0.1 });
   const galeriaInView = useInView(galeriaRef, { once: true, amount: 0.1 });
   const testimonialesInView = useInView(testimonialesRef, { once: true, amount: 0.1 });
   const comoFuncionaInView = useInView(comoFuncionaRef, { once: true, amount: 0.2 });
@@ -636,6 +638,214 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.9 }}
           >
             Nuestros planes están para pérdida de peso, grasa y mantener una buena salud, y si estás buscando para masa muscular se pueden adaptar. Planes de lunes a viernes, con opción a incluir sábados con costo extra.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Planes Masa Muscular */}
+      <section id="planes-masa" ref={planesMasaRef} className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <Image src="/bg-image-muscle.png" alt="" fill className="object-cover object-center" />
+        <div className="absolute inset-0 bg-white/85" />
+        <div className="relative max-w-7xl mx-auto">
+          <motion.h2
+            className="text-4xl font-bold text-center mb-4 text-gray-900"
+            initial={{ y: 30, opacity: 0 }}
+            animate={planesMasaInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Plan Alimenticio para Aumento de Masa Muscular
+          </motion.h2>
+          <motion.p
+            className="text-center text-gray-600 mb-16 max-w-2xl mx-auto"
+            initial={{ y: 20, opacity: 0 }}
+            animate={planesMasaInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Elige el plan que mejor se adapte a tus objetivos y estilo de vida
+          </motion.p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Plan 1: Comida */}
+            <motion.div
+              className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={planesMasaInView ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              whileHover={{ scale: 1.05, y: -10 }}
+            >
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Plan Comida — Masa Muscular</h3>
+                <p className="text-gray-600 mb-2">Tu almuerzo del día cubierto</p>
+                <p className="text-3xl font-bold text-green-600">$760.00<span className="text-base font-normal text-gray-500">/semanal</span></p>
+                
+              </div>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Comida</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Colaciones</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Agua</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Servicio a domicilio</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Asesoría nutricional presencial</span>
+                </li>
+              </ul>
+              <a href="https://wa.me/5216692684633?text=Hola%2C%20me%20interesa%20el%20Plan%20Comida%20-%20Masa%20Muscular%20(%24760.00).%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%3F" target="_blank" rel="noopener noreferrer" className="block w-full bg-green-600 text-white text-center px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition">
+                Solicitar Información
+              </a>
+            </motion.div>
+
+            {/* Plan 2: Desayuno + Comida o Comida + Cena */}
+            <motion.div
+              className="bg-gradient-to-br from-green-600 to-green-700 rounded-2xl shadow-xl p-8 transform scale-105 relative"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={planesMasaInView ? { scale: 1.05, opacity: 1 } : { scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              whileHover={{ scale: 1.1, y: -10 }}
+            >
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                Más Popular
+              </div>
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-white mb-2">Plan Desayuno + Comida — Masa Muscular</h3>
+                <p className="text-green-100 mb-2">Desayuno + Comida o Comida + Cena</p>
+                <p className="text-3xl font-bold text-white">$1,255.00<span className="text-base font-normal text-green-200">/semanal</span></p>
+                
+              </div>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-white mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-white">Desayuno</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-white mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-white">Comida</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-white mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-white">Colaciones</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-white mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-white">Agua</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-white mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-white">Servicio a domicilio</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-white mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-white">Asesoría nutricional presencial</span>
+                </li>
+              </ul>
+              <a href="https://wa.me/5216692684633?text=Hola%2C%20me%20interesa%20el%20Plan%20Desayuno%20%2B%20Comida%20-%20Masa%20Muscular%20(%241%2C255.00).%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%3F" target="_blank" rel="noopener noreferrer" className="block w-full bg-white text-green-600 text-center px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
+                Solicitar Información
+              </a>
+            </motion.div>
+
+            {/* Plan 3: Desayuno + Comida + Cena */}
+            <motion.div
+              className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={planesMasaInView ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+              whileHover={{ scale: 1.05, y: -10 }}
+            >
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Plan Completo — Masa Muscular</h3>
+                <p className="text-gray-600 mb-2">Desayuno + Comida + Cena</p>
+                <p className="text-3xl font-bold text-green-600">$1,835.00<span className="text-base font-normal text-gray-500">/semanal</span></p>
+                
+              </div>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Desayuno</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Comida</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Cena</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Colaciones</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Agua</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Servicio a domicilio</span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Asesoría nutricional presencial</span>
+                </li>
+              </ul>
+              <a href="https://wa.me/5216692684633?text=Hola%2C%20me%20interesa%20el%20Plan%20Completo%20-%20Masa%20Muscular%20-%20Desayuno%20%2B%20Comida%20%2B%20Cena%20(%241%2C835.00).%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%3F" target="_blank" rel="noopener noreferrer" className="block w-full bg-green-600 text-white text-center px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition">
+                Solicitar Información
+              </a>
+            </motion.div>
+          </div>
+
+          <motion.p
+            className="text-center text-gray-600 mt-12 max-w-3xl mx-auto text-base italic"
+            initial={{ y: 20, opacity: 0 }}
+            animate={planesMasaInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+          >
+            Planes de lunes a viernes, con opción a incluir sábados con costo extra.
           </motion.p>
         </div>
       </section>
