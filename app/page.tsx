@@ -114,14 +114,11 @@ export default function Home() {
   const testimonialesInView = useInView(testimonialesRef, { once: true, amount: 0.1 });
   const comoFuncionaInView = useInView(comoFuncionaRef, { once: true, amount: 0.2 });
 
-  const whatsappMessage = encodeURIComponent('Quiero adquirir mi 10% de descuento por el plan de dos semanas por favor');
-  const whatsappUrl = `https://wa.me/5216692684633?text=${whatsappMessage}`;
-
   return (
     <div className="min-h-screen bg-white">
 
-      {/* March Promo Popup */}
-      {/* {promoOpen && (
+      {/* Hot Sale Promo Popup */}
+      {promoOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
           <div className="relative bg-white rounded-2xl shadow-2xl max-w-sm w-full overflow-hidden">
             <button
@@ -132,28 +129,24 @@ export default function Home() {
               ✕
             </button>
             <Image
-              src="/march-promo.webp"
-              alt="Promoción de marzo"
+              src="/hot-sale-promo.webp"
+              alt="Hot Sale Saudavel"
               width={400}
               height={500}
               className="w-full object-cover"
             />
-            <div className="p-4">
+            <div className="p-4 flex justify-center">
               <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-xl transition"
+                href="#hot-sale"
+                onClick={() => setPromoOpen(false)}
+                className="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-3 rounded-full transition shadow-md"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-5 h-5 fill-white">
-                  <path d="M16 0C7.164 0 0 7.163 0 16c0 2.822.736 5.476 2.027 7.785L0 32l8.425-2.007A15.938 15.938 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.787-1.858l-.486-.29-5.002 1.192 1.216-4.876-.317-.5A13.267 13.267 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.878c-.398-.199-2.354-1.162-2.719-1.294-.365-.133-.63-.199-.896.199-.265.398-1.028 1.294-1.26 1.56-.232.265-.465.298-.863.099-.398-.199-1.682-.62-3.204-1.977-1.184-1.057-1.983-2.362-2.215-2.76-.232-.398-.025-.613.175-.811.18-.18.398-.465.597-.698.199-.232.265-.398.398-.663.133-.265.067-.498-.033-.697-.1-.199-.896-2.162-1.228-2.96-.323-.776-.651-.671-.896-.683l-.763-.013c-.265 0-.697.1-.1063.498-.365.398-1.395 1.362-1.395 3.323 0 1.96 1.428 3.854 1.628 4.119.199.265 2.81 4.29 6.81 6.016.951.41 1.693.655 2.272.839.954.304 1.823.261 2.51.158.766-.114 2.354-.963 2.687-1.892.332-.93.332-1.727.232-1.892-.099-.166-.365-.265-.763-.465z"/>
-                </svg>
-                Quiero mi 10% de descuento
+                Ver Hot Sale 🔥
               </a>
             </div>
           </div>
         </div>
-      )} */}
+      )}
       {/* Header/Navbar */}
       <motion.header
         className="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50"
@@ -931,6 +924,44 @@ export default function Home() {
               whileTap={{ scale: 0.95 }}
             >
               Preguntar por una Promo
+            </motion.a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Hot Sale */}
+      <section id="hot-sale" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-500 to-red-600">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="inline-block bg-white text-red-600 px-4 py-1 rounded-full text-sm font-bold tracking-wide mb-4">
+              🔥 HOT SALE
+            </span>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
+              Del 01 al 13
+            </h2>
+            <p className="text-2xl md:text-3xl font-bold text-white mb-2">
+              Obtén 7% OFF o 10% pagando en efectivo
+            </p>
+            <p className="text-orange-100 text-sm mb-8">
+              *Aplica en planes de 2 alimentos al día
+            </p>
+            <motion.a
+              href="https://wa.me/5216692684633?text=Hola%2C%20quiero%20aprovechar%20el%20Hot%20Sale%20(7%25%20OFF%20o%2010%25%20pagando%20en%20efectivo)"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-white text-red-600 px-8 py-4 rounded-full text-lg font-bold hover:bg-gray-100 transition shadow-lg"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-6 h-6 fill-current">
+                <path d="M16 0C7.164 0 0 7.163 0 16c0 2.822.736 5.476 2.027 7.785L0 32l8.425-2.007A15.938 15.938 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.787-1.858l-.486-.29-5.002 1.192 1.216-4.876-.317-.5A13.267 13.267 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.878c-.398-.199-2.354-1.162-2.719-1.294-.365-.133-.63-.199-.896.199-.265.398-1.028 1.294-1.26 1.56-.232.265-.465.298-.863.099-.398-.199-1.682-.62-3.204-1.977-1.184-1.057-1.983-2.362-2.215-2.76-.232-.398-.025-.613.175-.811.18-.18.398-.465.597-.698.199-.232.265-.398.398-.663.133-.265.067-.498-.033-.697-.1-.199-.896-2.162-1.228-2.96-.323-.776-.651-.671-.896-.683l-.763-.013c-.265 0-.697.1-.1063.498-.365.398-1.395 1.362-1.395 3.323 0 1.96 1.428 3.854 1.628 4.119.199.265 2.81 4.29 6.81 6.016.951.41 1.693.655 2.272.839.954.304 1.823.261 2.51.158.766-.114 2.354-.963 2.687-1.892.332-.93.332-1.727.232-1.892-.099-.166-.365-.265-.763-.465z"/>
+              </svg>
+              Aprovechar Hot Sale
             </motion.a>
           </motion.div>
         </div>
