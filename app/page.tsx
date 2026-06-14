@@ -118,7 +118,7 @@ export default function Home() {
     <div className="min-h-screen bg-white">
 
       {/* Hot Sale Promo Popup */}
-      {promoOpen && (
+      {/* {promoOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
           <div className="relative bg-white rounded-2xl shadow-2xl max-w-sm w-full overflow-hidden">
             <button
@@ -146,7 +146,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      )}
+      )} */}
       {/* Header/Navbar */}
       <motion.header
         className="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50"
@@ -930,7 +930,7 @@ export default function Home() {
       </section>
 
       {/* Hot Sale */}
-      <section id="hot-sale" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-500 to-red-600">
+      {/* <section id="hot-sale" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-orange-500 to-red-600">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
@@ -965,7 +965,7 @@ export default function Home() {
             </motion.a>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Galería de Platillos */}
       <section id="galeria" ref={galeriaRef} className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
