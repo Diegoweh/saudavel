@@ -117,8 +117,8 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
 
-      {/* Hot Sale Promo Popup */}
-      {/* {promoOpen && (
+      {/* Promo Popup */}
+      {promoOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
           <div className="relative bg-white rounded-2xl shadow-2xl max-w-sm w-full overflow-hidden">
             <button
@@ -129,24 +129,15 @@ export default function Home() {
               ✕
             </button>
             <Image
-              src="/hot-sale-promo.webp"
-              alt="Hot Sale Saudavel"
+              src="/images/popup.webp"
+              alt="Promoción Saudavel"
               width={400}
               height={500}
               className="w-full object-cover"
             />
-            <div className="p-4 flex justify-center">
-              <a
-                href="#hot-sale"
-                onClick={() => setPromoOpen(false)}
-                className="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-3 rounded-full transition shadow-md"
-              >
-                Ver Hot Sale 🔥
-              </a>
-            </div>
           </div>
         </div>
-      )} */}
+      )}
       {/* Header/Navbar */}
       <motion.header
         className="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50"
