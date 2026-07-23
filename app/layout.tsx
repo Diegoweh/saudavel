@@ -75,7 +75,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ClerkProvider>{children}</ClerkProvider>
+        <ClerkProvider
+          appearance={{
+            variables: {
+              colorPrimary: "#16a34a",
+              borderRadius: "0.75rem",
+            },
+            options: {
+              logoImageUrl: "/logo-navbar.png",
+            },
+          }}
+        >
+          {children}
+        </ClerkProvider>
         <GoogleAnalytics gaId="G-JWHH1489XP" />
       </body>
     </html>
