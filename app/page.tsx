@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Image from 'next/image';
+import { Show, SignInButton, UserButton } from '@clerk/nextjs';
 
 import { GiCash } from "react-icons/gi";
 import { FaCalendarCheck, FaFacebook } from "react-icons/fa";
@@ -184,17 +185,31 @@ export default function Home() {
             </motion.div>
 
             {/* Desktop CTA Button */}
-            <motion.a
-              href="#contacto"
-              className="hidden md:block bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition"
+            <motion.div
+              className="hidden md:flex items-center gap-4"
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
             >
-              Comenzar
-            </motion.a>
+              <Show when="signed-out">
+                <SignInButton mode="modal">
+                  <button className="text-gray-700 hover:text-green-600 transition cursor-pointer">
+                    Iniciar Sesión
+                  </button>
+                </SignInButton>
+              </Show>
+              <Show when="signed-in">
+                <UserButton />
+              </Show>
+              <motion.a
+                href="#contacto"
+                className="bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Comenzar
+              </motion.a>
+            </motion.div>
 
             {/* Mobile Menu Button */}
             <motion.button
@@ -266,6 +281,21 @@ export default function Home() {
                 {item.name}
               </motion.a>
             ))}
+            <Show when="signed-out">
+              <SignInButton mode="modal">
+                <button
+                  className="block w-full text-left py-3 px-4 text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-lg transition"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Iniciar Sesión
+                </button>
+              </SignInButton>
+            </Show>
+            <Show when="signed-in">
+              <div className="py-3 px-4">
+                <UserButton />
+              </div>
+            </Show>
             <motion.a
               href="#contacto"
               className="block w-full bg-green-600 text-white text-center px-6 py-3 rounded-full hover:bg-green-700 transition mt-4"
